@@ -1,1 +1,11 @@
 require_relative '../config/environment.rb'
+
+puts "Hey there, please input the full path to your CSV"
+
+csv_path = gets.strip
+days = []
+CSV.foreach(csv_path, "r:ISO-8859-1") do |row|    
+  days << Day.new(row)
+end
+
+puts days[20].end_time

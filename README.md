@@ -10,6 +10,6 @@ the first week of Flatiron school or the third week or whatever,
 so that I can get the specs for that as well. 
 
 
-I want to:
+Notes:
 
-  - 
+there is one sunday where I didn't go, which will be an edge case

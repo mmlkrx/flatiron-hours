@@ -31,15 +31,30 @@ class CsvReader
   def convert(day)
     day.collect do |e|
       if date?(e)
-        # convert to date
+        DateTime.strptime("#{e}+0100", '%m/%d/%y%z')
       elsif time?(e)
-        # convert to datetime
+        DateTime.strptime("#{insert_day(day, e)} #{e} +0100", '%m/%d/%y %H:%M %z')
       elsif minutes?(e)
         e.to_i
       else
         raise TypeError("Can't convert: #{e}")  
       end
     end
+  end
+
+  def insert_day(day, time)
+    # determines whether it is the next day or same day 
+    if (0..6).include? Time.parse(time).hour 
+      increment_day(day)
+    else
+      day[0]
+    end
+  end
+
+  def increment_day(day)
+    month, day, year = day[0].scan(/\d+\/?/)
+    day = day.to_i + 1
+    "#{month}#{day}/#{year}"
   end
 
   def date?(str)

@@ -21,4 +21,13 @@ class CsvReader
     str.scan(/\d+\/?/).length == 3
   end
 
+  def time?(str)
+    str.scan(/:/).length == 1
+  end
+
+  def minutes?(str)
+    !time?(str)
+  end
+
+
 end

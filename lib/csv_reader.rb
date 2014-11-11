@@ -11,4 +11,14 @@ class CsvReader
 
   end
 
+  def convert_datetime
+     # ["6/30/14", "8:15", "20:00", "210", "0"],
+     # ["7/1/14", "8:15", "8:20", "120", "60"],
+  end
+
+  def date?(str)
+    # return value for scan: ["6/", "14/", "14"]
+    str.scan(/\d+\/?/).length == 3
+  end
+
 end

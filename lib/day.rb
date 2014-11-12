@@ -13,6 +13,7 @@ class Day
   end
 
 	def initialize
+    @@all << self
   end
 
   def self.all

@@ -1,10 +1,9 @@
 class CsvReader
 
-  attr_accessor :days, :converted_days
+  attr_accessor :days
 
   def initialize(file_path)
     self.days = []
-    self.converted_days = []
 
     CSV.foreach(file_path, "r:ISO-8859-1") do |row|    
       self.days << row
@@ -16,7 +15,7 @@ class CsvReader
     # ["6/30/14", "8:15", "20:00", "210", "0"],
     # ["7/1/14", "8:15", "8:20", "120", "60"],
     days.collect do |day|
-      converted_days << convert(day)
+      convert(day)
     end
   end
 

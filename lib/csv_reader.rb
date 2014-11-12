@@ -11,21 +11,11 @@ class CsvReader
     end
   end
 
-  def export_days
-    parse_days
-
-    e_days = {}
-    converted_days.each do |day|
-      e_days[day[0]] = [day[1], day[2], day[3], day[4]]
-    end
-    e_days
-  end
-
   def parse_days
     # input:
     # ["6/30/14", "8:15", "20:00", "210", "0"],
     # ["7/1/14", "8:15", "8:20", "120", "60"],
-    days.each do |day|
+    days.collect do |day|
       converted_days << convert(day)
     end
   end

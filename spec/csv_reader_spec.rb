@@ -10,12 +10,5 @@ describe CsvReader do
       expect(reader.converted_days.count).to eq(87)
     end
   end 
-
-  describe '#export_days' do
-    it 'exports a hash with datetime objects as keys' do
-      days = reader.export_days
-      expect(days.keys.first).to respond_to(:to_date, :to_time)
-    end
-  end
   
 end

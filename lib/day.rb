@@ -17,8 +17,19 @@ class Day
     end
   end
 
+  def self.average_flatiron_minutes
+    result = all.inject(0) do |sum, day|
+      sum + day.flatiron_minutes
+    end
+    result / all.count
+  end
+
   def self.all
     @@all
+  end
+
+  def flatiron_minutes
+    (end_time.to_time - start_time.to_time) / 60.0
   end
 
 end

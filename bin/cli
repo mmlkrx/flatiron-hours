@@ -7,4 +7,6 @@ csv_path = gets.strip
 reader = CsvReader.new(csv_path)
 days_array = reader.parse_days
 
+days_array.each{|d| Day.new_from_array(d)}
+
 

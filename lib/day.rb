@@ -31,6 +31,13 @@ class Day
     result / all.count
   end
 
+  def self.average_home_study_time
+    result = all.inject(0) do |sum, day|
+      sum + day.home_study_time
+    end
+    result / all.count
+  end
+
   def self.all
     @@all
   end

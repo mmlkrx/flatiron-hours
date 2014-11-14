@@ -24,6 +24,13 @@ class Day
     result / all.count
   end
 
+  def self.average_break_minutes
+    result = all.inject(0) do |sum, day|
+      sum + day.pause_time
+    end
+    result / all.count
+  end
+
   def self.all
     @@all
   end

@@ -42,8 +42,16 @@ class Day
     average_flatiron_minutes + average_home_study_minutes - average_break_minutes
   end
 
+  def self.find_by_date(date)
+    
+  end
+
   def self.all
     @@all
+  end
+
+  def print_information
+    "On #{date.strftime("%B #{date.day.ordinalize}")} you've spend #{flatiron_minutes / 60.0} hours on campus"
   end
 
   def flatiron_minutes

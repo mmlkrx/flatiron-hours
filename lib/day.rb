@@ -51,11 +51,24 @@ class Day
   end
 
   def print_information
-    "On #{date.strftime("%B #{date.day.ordinalize}")} you've spend #{flatiron_minutes / 60.0} hours on campus"
+    puts "On #{date.strftime("%B #{date.day.ordinalize}")} you've spend #{format_minutes(flatiron_minutes)} hours on campus."
+    puts "The time spend on break or playing Pillarball was #{format_minutes(pause_time)} hours."
+    puts "When you got home you spend another #{format_minutes(home_study_time)} hours studying." if home_study_time > 0
+    puts "Your total study time was #{format_minutes(work_minutes)} hours."
   end
 
   def flatiron_minutes
-    (end_time.to_time - start_time.to_time) / 60.0
+    (end_time.to_time - start_time.to_time).to_i / 60
+  end
+
+  def work_minutes
+    flatiron_minutes + home_study_time - pause_time
+  end
+
+  def format_minutes(minutes)
+    hours = minutes / 60
+    minutes = minutes % 60
+    minutes == 0 ? "#{hours}" : "#{hours}:#{minutes}"
   end
 
 end

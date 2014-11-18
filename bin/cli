@@ -1,7 +1,7 @@
 require_relative '../config/environment.rb'
 
 puts "Hey there, please input the full path to your CSV"
-
+# /Users/mm/Development/code/self/flatiron-hours/flatiron.csv
 csv_path = gets.strip
 
 reader = CsvReader.new(csv_path)
@@ -9,4 +9,14 @@ days_array = reader.parse_days
 
 days_array.each{|d| Day.new_from_array(d)}
 
+puts "Get information from a specific day by putting in the day"
 
+date = gets.strip
+
+result = Day.find_by_date(date)
+
+if result == 0
+  puts "no information on that day"
+else
+  result.print_information
+end

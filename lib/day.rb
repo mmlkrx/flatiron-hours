@@ -43,7 +43,14 @@ class Day
   end
 
   def self.find_by_date(date)
-    
+    d = DateTime.parse("#{date}T00:00+01:00")
+    result = 0
+    Day.all.each do |day|
+      if d.to_s == day.date.to_s
+        result = day
+      end
+    end
+    result
   end
 
   def self.all

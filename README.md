@@ -1,1 +1,1 @@
-This CIL app allows me to check how much I've been on the grind this summer!
+This CLI app allows me to check how much I've been on the grind this summer!

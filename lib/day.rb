@@ -17,6 +17,31 @@ class Day
     end
   end
 
+  def self.total_flatiron_minutes
+    result = all.inject(0) do |sum, day|
+      sum + day.flatiron_minutes
+    end
+    result
+  end
+
+  def self.total_study_time
+    total_flatiron_minutes - total_break_minutes + total_home_study_minutes
+  end
+
+  def self.total_break_minutes
+    result = all.inject(0) do |sum, day|
+      sum + day.pause_time
+    end
+    result
+  end
+
+  def self.total_home_study_minutes
+    result = all.inject(0) do |sum, day|
+      sum + day.home_study_time
+    end
+    result
+  end
+
   def self.average_flatiron_minutes
     result = all.inject(0) do |sum, day|
       sum + day.flatiron_minutes
@@ -65,6 +90,17 @@ class Day
     @@all
   end
 
+  def self.print_information
+    avrg = format_minutes(average_flatiron_minutes)
+    work = format_minutes(average_flatiron_minutes - average_break_minutes)
+    puts "Your average daily time on campus was #{avrg} hours."
+    puts "Of those #{avrg} hours, you spend #{work} hours studying."
+    puts "When you came home, you spend another #{average_home_study_minutes} minutes studying.\n\n"
+    puts "The total time spend in school during #{all.count} days was #{total_flatiron_minutes / 60} hours."
+    puts "The total time spend studying was #{total_study_time / 60} hours.\n\n"
+    puts "Good job!"
+  end
+
   def print_information
     puts "On #{date.strftime("%B #{date.day.ordinalize}")} you've spend #{format_minutes(flatiron_minutes)} hours on campus."
     puts "The time spend on break or playing Pillarball was #{format_minutes(pause_time)} hours."
@@ -81,6 +117,12 @@ class Day
   end
 
   def format_minutes(minutes)
+    hours = minutes / 60
+    minutes = minutes % 60
+    minutes == 0 ? "#{hours}" : "#{hours}:#{minutes}"
+  end
+
+  def self.format_minutes(minutes)
     hours = minutes / 60
     minutes = minutes % 60
     minutes == 0 ? "#{hours}" : "#{hours}:#{minutes}"

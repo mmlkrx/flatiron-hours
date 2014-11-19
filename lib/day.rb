@@ -119,13 +119,31 @@ class Day
   def format_minutes(minutes)
     hours = minutes / 60
     minutes = minutes % 60
-    minutes == 0 ? "#{hours}" : "#{hours}:#{minutes}"
+
+    if hours < 10 && minutes < 10
+      "0#{hours}:0#{minutes}"
+    elsif hours < 10 && minutes > 9
+      "0#{hours}:#{minutes}"
+    elsif hours > 9 && minutes > 9 
+      "#{hours}:#{minutes}"
+    else
+      "#{hours}:0#{minutes}"
+    end
   end
 
   def self.format_minutes(minutes)
     hours = minutes / 60
     minutes = minutes % 60
-    minutes == 0 ? "#{hours}" : "#{hours}:#{minutes}"
+
+    if hours < 10 && minutes < 10
+      "0#{hours}:0#{minutes}"
+    elsif hours < 10 && minutes > 9
+      "0#{hours}:#{minutes}"
+    elsif hours > 9 && minutes > 9 
+      "#{hours}:#{minutes}"
+    else
+      "#{hours}:0#{minutes}"
+    end
   end
 
 end

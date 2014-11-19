@@ -20,3 +20,9 @@ if result == 0
 else
   result.print_information
 end
+
+puts "Now finding the longest day"
+
+longest = Day.find_longest_day
+
+longest.print_information

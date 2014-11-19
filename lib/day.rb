@@ -38,6 +38,14 @@ class Day
     result / all.count
   end
 
+  def self.find_longest_day
+    result = all.first
+    all.each do |day|
+      result = day if day.flatiron_minutes > result.flatiron_minutes
+    end
+    result
+  end
+
   def self.average_work_minutes
     average_flatiron_minutes + average_home_study_minutes - average_break_minutes
   end

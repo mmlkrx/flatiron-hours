@@ -93,10 +93,10 @@ class Day
   end
 
   def print_information
-    puts "On #{date.strftime("%B #{date.day.ordinalize}")} you've spend #{format_minutes(flatiron_minutes)} hours on campus."
-    puts "The time spend on break or playing Pillarball was #{format_minutes(pause_time)} hours."
-    puts "When you got home you spend another #{format_minutes(home_study_time)} hours studying." if home_study_time > 0
-    puts "Your total study time was #{format_minutes(work_minutes)} hours."
+    puts "On #{date.strftime("%B #{date.day.ordinalize}")} you've spend #{Day::format_minutes(flatiron_minutes)} hours on campus."
+    puts "The time spend on break or playing Pillarball was #{self.class.format_minutes(pause_time)} hours."
+    puts "When you got home you spend another #{Day::format_minutes(home_study_time)} hours studying." if home_study_time > 0
+    puts "Your total study time was #{self.class.format_minutes(work_minutes)} hours."
   end
 
   def flatiron_minutes
@@ -105,21 +105,6 @@ class Day
 
   def work_minutes
     flatiron_minutes + home_study_time - pause_time
-  end
-
-  def format_minutes(minutes)
-    hours = minutes / 60
-    minutes = minutes % 60
-
-    if hours < 10 && minutes < 10
-      "0#{hours}:0#{minutes}"
-    elsif hours < 10 && minutes > 9
-      "0#{hours}:#{minutes}"
-    elsif hours > 9 && minutes > 9 
-      "#{hours}:#{minutes}"
-    else
-      "#{hours}:0#{minutes}"
-    end
   end
 
   def self.format_minutes(minutes)

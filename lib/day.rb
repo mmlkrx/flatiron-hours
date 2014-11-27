@@ -43,24 +43,15 @@ class Day
   end
 
   def self.average_flatiron_minutes
-    result = all.inject(0) do |sum, day|
-      sum + day.flatiron_minutes
-    end
-    result / all.count
+    total_flatiron_minutes / all.count
   end
 
   def self.average_break_minutes
-    result = all.inject(0) do |sum, day|
-      sum + day.pause_time
-    end
-    result / all.count
+    total_break_minutes / all.count
   end
 
   def self.average_home_study_minutes
-    result = all.inject(0) do |sum, day|
-      sum + day.home_study_time
-    end
-    result / all.count
+    total_home_study_minutes / all.count
   end
 
   def self.find_longest_day
